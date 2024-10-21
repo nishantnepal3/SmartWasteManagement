@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+      "SmartWasteBin": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "location": { "type": "string" },
+          "fillLevel": { "type": "number" },
+          "compactionStatus": { "type": "boolean" },
+          "wasteType": { "type": "string" },
+          "solarPowerStatus": { "type": "boolean" }
+        },
+        "required": ["id", "location", "fillLevel", "wasteType", "solarPowerStatus"]
+      },
+      "WasteCollectionVehicle": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "location": { "type": "string" },
+          "fuelLevel": { "type": "number" },
+          "route": { "type": "string" },
+          "maintenanceStatus": { "type": "string" }
+        },
+        "required": ["id", "location", "fuelLevel", "route", "maintenanceStatus"]
+      },
+      "WasteManagementSystem": {
+        "type": "object",
+        "properties": {
+          "totalWasteCollected": { "type": "number" },
+          "recycledWastePercentage": { "type": "number" }
+        },
+        "required": ["totalWasteCollected", "recycledWastePercentage"]
+      },
+      "Citizen": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "greenPoints": { "type": "number" }
+        },
+        "required": ["id", "name", "email", "greenPoints"]
+      },
+      "RecyclingFacility": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "location": { "type": "string" },
+          "recyclingCapacity": { "type": "number" },
+          "recyclingEfficiency": { "type": "number" }
+        },
+        "required": ["id", "location", "recyclingCapacity", "recyclingEfficiency"]
+      },
+      "WasteToEnergyPlant": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "location": { "type": "string" },
+          "energyOutput": { "type": "number" },
+          "emissionLevels": { "type": "number" }
+        },
+        "required": ["id", "location", "energyOutput", "emissionLevels"]
+      }
+    },
+    "type": "object"
+  }
+  
