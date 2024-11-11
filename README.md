@@ -283,5 +283,125 @@ Copy code
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.3"
+  }The Jest-Demo folder demonstrates how to set up and run unit tests using Jest for testing TypeScript code. It includes a simple example of how the Calculator class is tested for basic operations like addition, subtraction, multiplication, and division.
+
+File Structure:
+perl
+Copy code
+jest-demo/
+  ├── calculator.test.ts        # Jest test cases for the Calculator class
+  ├── calculator.ts             # TypeScript implementation of the Calculator class
+  ├── jest.config.js            # Jest configuration file for TypeScript support
+  ├── package-lock.json         # Automatically generated file to lock the dependencies
+  └── package.json              # Defines the dependencies and scripts for running tests
+File Descriptions:
+calculator.test.ts: This file contains Jest test cases for the Calculator class. The tests include:
+
+add: Verifies that two positive numbers add correctly and that the method handles negative numbers.
+
+divide: Verifies that division is performed correctly, and checks for error handling when dividing by zero.
+
+Example of calculator.test.ts:
+
+typescript
+Copy code
+import { Calculator } from './calculator';
+
+describe('Calculator', () => {
+  let calculator: Calculator;
+
+  beforeEach(() => {
+    calculator = new Calculator();
+  });
+
+  describe('add', () => {
+    it('should add two positive numbers', () => {
+      expect(calculator.add(2, 3)).toBe(5);
+    });
+
+    it('should handle negative numbers', () => {
+      expect(calculator.add(-1, 1)).toBe(0);
+    });
+  });
+
+  describe('divide', () => {
+    it('should divide two numbers', () => {
+      expect(calculator.divide(6, 2)).toBe(3);
+    });
+
+    it('should throw error on division by zero', () => {
+      expect(() => calculator.divide(5, 0)).toThrow('Division by zero');
+    });
+  });
+});
+calculator.ts: This file contains the implementation of the Calculator class. The class includes methods for basic arithmetic operations:
+
+add(a, b): Adds two numbers.
+
+subtract(a, b): Subtracts the second number from the first.
+
+multiply(a, b): Multiplies two numbers.
+
+divide(a, b): Divides the first number by the second, with error handling for division by zero.
+
+Example of calculator.ts:
+
+typescript
+Copy code
+export class Calculator {
+  add(a: number, b: number): number {
+    return a + b;
+  }
+
+  subtract(a: number, b: number): number {
+    return a - b;
+  }
+
+  multiply(a: number, b: number): number {
+    return a * b;
+  }
+
+  divide(a: number, b: number): number {
+    if (b === 0) {
+      throw new Error("Division by zero");
+    }
+    return a / b;
   }
 }
+jest.config.js: The Jest configuration file for setting up Jest with TypeScript. It includes configuration to run tests with the ts-jest transformer and specifies where to find the tests.
+
+Example of jest.config.js:
+
+javascript
+Copy code
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/*.test.ts'],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  }
+};
+package.json: Defines the dependencies and scripts for running the tests. It includes the required dependencies for Jest, TypeScript, and ts-jest. The script "test" can be used to run tests using Jest, and additional scripts for coverage and watching tests are also available.
+
+Example of package.json:
+
+json
+Copy code
+{
+  "name": "jest-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  }
+}
+};
