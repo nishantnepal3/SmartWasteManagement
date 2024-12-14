@@ -39,3 +39,8 @@ jobs:
     # Run Jest tests
     - name: Run Jest tests
       run: npx jest --ci
+
+    # Notify on success
+    - name: Notify on success
+      if: success()
+      run: echo "All tests passed!"
