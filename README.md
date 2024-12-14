@@ -42,7 +42,7 @@ The project includes TypeScript modules, unit tests, and a build system for easy
 | `package-lock.json`  | Specifies the exact dependency versions installed.                        |
 | `README.md`          | Documentation file (this file).                                           |
 | `tsconfig.json`      | Configuration file for the TypeScript compiler.                           |
-
+| `.github/workflows`  | folder for workflows file that consists yml file                           |
 ---
 
 ### Source Code (`src/`)
@@ -209,6 +209,13 @@ The root directory provides essential files for project setup, dependency manage
 
 #### `src/wastetoenergyplant.ts`
 - **Purpose**: Models the functionality of a waste-to-energy conversion plant.
+- **Examples**:
+  - Convert waste into usable energy.
+  - Monitor plant efficiency.
+
+
+#### `.github/workflows/jest.yml`
+- **Purpose**: Models the functionality github workflows
 - **Examples**:
   - Convert waste into usable energy.
   - Monitor plant efficiency.
